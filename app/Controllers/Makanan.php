@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\MakananModel; // Tambahkan ini untuk menggunakan model
 
 class Makanan extends BaseController
 {
@@ -25,5 +26,29 @@ class Makanan extends BaseController
         }
 
         return view('hasil', ['nama' => $nama, 'kalori' => $kalori, 'saran' => $saran]);
+    }
+
+    public function simpan()
+    {
+        $model = new MakananModel();
+        $model->insert([
+            'nama_makanan' => $this->request->getPost('nama_makanan'),
+            'kalori' => $this->request->getPost('berat') * 4, // Perhitungan kalori
+        ]);
+
+        return redirect()->to(base_url('makanan/daftar'));
+    }
+
+    public function daftar()
+    {
+        $makanan = [
+            ['nama' => 'Nasi', 'kalori' => 130],
+            ['nama' => 'Ayam Goreng', 'kalori' => 240],
+            ['nama' => 'Telur Rebus', 'kalori' => 70],
+        ];
+
+        $total_kalori = array_sum(array_column($makanan, 'kalori'));
+
+        return view('rencana_makanan', ['makanan' => $makanan, 'total_kalori' => $total_kalori]);
     }
 }

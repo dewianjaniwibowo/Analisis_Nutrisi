@@ -25,7 +25,39 @@
             width: 100%;
             height: 300px;
         }
-    </style>
+
+        .info-container {
+            background: #f9f9f9;
+            border-left: 5px solid #ff5e5e;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .info-container h2 {
+            text-align: center;
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .tips-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .tips-list li {
+            font-size: 18px;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tips-list li:last-child {
+            border-bottom: none;
+        }
+</style>
 </head>
 <body>
 
@@ -57,6 +89,20 @@
             <canvas id="barChart"></canvas>
         </div>
     </div>
+
+    <div class="info-container">
+            <h2>✨ Tips Menjaga Pola Makan Sehat ✨</h2>
+            <ul class="tips-list">
+                <li>🥗 Konsumsi makanan seimbang dengan gizi yang cukup</li>
+                <li>💧 Minum air putih minimal 8 gelas per hari</li>
+                <li>🍏 Perbanyak buah dan sayur dalam menu harian</li>
+                <li>⏳ Makan secara teratur dan tidak melewatkan sarapan</li>
+                <li>🚫 Kurangi konsumsi gula, garam, dan makanan olahan</li>
+            </ul>
+        </div>
+        
+        <a href="https://www.halodoc.com/?srsltid=AfmBOoqPpGp0E8SYZRsulLiv6YGgZAdW5M5O_2fJ2sZSRFuWPSk_zyzE" class="btn btn-primary mt-3" target="_blank">📲 More Details</a>
+
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -106,6 +152,4 @@
             });
         });
     </script>
-
-</body>
-</html>
+</body></html>
