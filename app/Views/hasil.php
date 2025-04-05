@@ -1,304 +1,197 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hasil Perhitungan</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Poppins', sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        .container {
-            max-width: 700px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
+  <meta charset="UTF-8">
+  <title>Hitung Kalori | Sistem Gizi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* RESET DAN DASAR */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
 
-        /* Styling navbar biar lebih rapi */
-.navbar {
-    padding: 10px 20px;
-    border-bottom: 2px solid #ddd;
-}
+    body {
+      background-color: #f6f7fb;
+      color: #333;
+    }
 
-.navbar-brand img {
-    max-height: 40px;
-}
+    /* 🔼 NAVBAR */
+    nav {
+      background-color: #ffffff;
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-.navbar-nav .nav-link {
-    font-size: 18px;
-    font-weight: 500;
-    color: #333;
-    margin: 0 15px;
-}
+    .logo {
+      font-weight: bold;
+      font-size: 20px;
+      color: #333;
+    }
 
-.navbar-nav .nav-link:hover {
-    color: #d9534f;
-}
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
 
-.navbar-toggler {
-    border: none;
-}
+    .nav-links li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
 
-.btn-danger {
-    padding: 5px 15px;
-    font-size: 16px;
-}
-        .chart-container {
-            width: 100%;
-            height: 300px;
-        }
+    .nav-links li a:hover {
+      color: #007bff;
+    }
 
-        .info-container {
-            background: #f9f9f9;
-            border-left: 5px solid #ff5e5e;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 8px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-            text-align: left;
-        }
-        .info-container h2 {
-            text-align: center;
-            font-size: 22px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .tips-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .tips-list li {
-            font-size: 18px;
-            padding: 10px 0;
-            border-bottom: 1px solid #ddd;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .tips-list li:last-child {
-            border-bottom: none;
-        }
+    .login-btn {
+      background-color: #e74c3c;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-        body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa;
-    text-align: center;
-}
+    /* KONTEN UTAMA */
+    .container {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 40px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+    }
 
-/* Header */
-header {
-    background-color: white;
-    color: #333; /* Warna teks lebih kontras */
-    padding: 15px 0;
-    font-size: 22px;
-    font-weight: bold;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000; /* Supaya tetap di atas */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Efek bayangan */
-}
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
+    label, input, button {
+      display: block;
+      width: 100%;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
 
-/* Container Utama */
-.container {
-    margin: 20px auto;
-    padding: 20px;
-    width: 80%;
-    background-color: white;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
 
-/* Tabel */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
+    button {
+      background-color: #2ecc71;
+      border: none;
+      color: white;
+      padding: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-table, th, td {
-    border: 1px solid #ddd;
-}
+    button:hover {
+      background-color: #27ae60;
+    }
 
-th, td {
-    padding: 10px;
-    text-align: center;
-}
+    .result {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #f1f1f1;
+      border-left: 5px solid #2ecc71;
+      border-radius: 6px;
+    }
 
-/* Tips */
-.tips {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #ffebcc;
-    border-radius: 10px;
-}
+    .tips {
+      margin-top: 40px;
+      background-color: #fffbe6;
+      padding: 20px;
+      border-radius: 6px;
+      font-size: 15px;
+    }
 
-/* Tombol More Details */
-.more-details {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.more-details:hover {
-    background-color: #0056b3;
-}
-
-/* Footer */
-footer {
-    background-color: white;
-    color: black;
-    padding: 15px;
-    margin-top: 20px;
-    font-size: 14px;
-}
-
-</style>
+    @media (max-width: 768px) {
+      .nav-links,
+      .login-btn {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
-<header>
-    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
-            <!-- Logo -->
-            <a class="navbar-brand" href="#">
-            <img src="<?php echo base_url('images/logo_gizi1.jfif'); ?>" alt="Logo Gizi" width="120">
-            </a>
 
-            <!-- Tombol Toggle untuk Mobile -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+  <!-- 🔼 NAVBAR -->
+  <nav>
+    <div class="logo">🍱 Sistem Kalori</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="https://www.halodoc.com" target="_blank">Layanan</a></li>
+      <li><a href="#">Artikel</a></li>
+      <li><a href="#">Konsultasi</a></li>
+      <li><a href="#">Tentang Kami</a></li>
+    </ul>
+    <a href="#" class="login-btn">Login</a>
+  </nav>
 
-            <!-- Menu Navigasi -->
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Layanan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Artikel</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Konsultasi</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Tentang Kami</a></li>
-                </ul>
-            </div>
+  <!-- 🔢 FORM HITUNG KALORI -->
+  <div class="container">
+    <h1>Hitung Kalori Makanan</h1>
+    <form id="kaloriForm">
+      <label for="makanan">Nama Makanan</label>
+      <input type="text" id="makanan" required placeholder="Contoh: ayam">
 
-            <!-- Tombol Login -->
-            <a href="#" class="btn btn-danger">Login</a>
-        </div>
-    </nav>
-</header>
+      <label for="jumlah">Jumlah Kalori</label>
+      <input type="number" id="jumlah" required placeholder="Contoh: 44">
 
-    <div class="container">
-        <h2 class="mb-4">🍽️ Hasil Perhitungan Kalori</h2>
-        <p><strong>Makanan:</strong> <?= $nama ?></p>
-        <p><strong>Kalori:</strong> <?= $kalori ?> kkal</p>
-        <p><strong>Rekomendasi:</strong> <?= $saran ?></p>
+      <button type="submit">Hitung Sekarang</button>
+    </form>
 
-        <table class="table table-hover table-bordered mt-4">
-            <thead class="table-dark">
-                <tr>
-                    <th>Makanan</th>
-                    <th>Kalori</th>
-                    <th>Rekomendasi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><?= $nama ?></td>
-                    <td><?= $kalori ?> kkal</td>
-                    <td><?= $saran ?></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="result" id="hasil" style="display:none;"></div>
 
-        <!-- Tambahkan elemen canvas untuk Bar Chart -->
-        <div class="chart-container">
-            <canvas id="barChart"></canvas>
-        </div>
+    <!-- 💡 TIPS -->
+    <div class="tips">
+      🌱 <strong>Tips Sehat:</strong><br/>
+      - Konsumsi makanan seimbang dengan gizi yang cukup<br/>
+      - Minum air putih minimal 8 gelas per hari<br/>
+      - Rutin olahraga dan istirahat cukup
     </div>
+  </div>
 
-    <div class="info-container">
-            <h2>✨ Tips Menjaga Pola Makan Sehat ✨</h2>
-            <ul class="tips-list">
-                <li>🥗 Konsumsi makanan seimbang dengan gizi yang cukup</li>
-                <li>💧 Minum air putih minimal 8 gelas per hari</li>
-                <li>🍏 Perbanyak buah dan sayur dalam menu harian</li>
-                <li>⏳ Makan secara teratur dan tidak melewatkan sarapan</li>
-                <li>🚫 Kurangi konsumsi gula, garam, dan makanan olahan</li>
-            </ul>
-        </div>
+  <!-- 🧠 LOGIKA JAVASCRIPT -->
+  <script>
+    const form = document.getElementById('kaloriForm');
+    const hasil = document.getElementById('hasil');
 
-        <a href="https://www.halodoc.com/?srsltid=AfmBOoqPpGp0E8SYZRsulLiv6YGgZAdW5M5O_2fJ2sZSRFuWPSk_zyzE" class="btn btn-primary mt-3" target="_blank">📲 More Details</a>
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nama = document.getElementById('makanan').value;
+      const jumlah = document.getElementById('jumlah').value;
 
+      let saran = "Bagus! Pola makan kamu sehat.";
+      if (jumlah > 300) saran = "Waspada! Terlalu banyak kalori.";
+      else if (jumlah < 50) saran = "Perlu tambah asupan, terlalu sedikit kalori.";
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var ctx = document.getElementById('barChart').getContext('2d');
-
-            var data = {
-                labels: ["Kalori Makanan"],
-                datasets: [{
-                    label: "Jumlah Kalori",
-                    data: [<?= $kalori ?>],
-                    backgroundColor: ["#ff6384"],
-                    borderColor: ["#e74c3c"],
-                    borderWidth: 2,
-                    borderRadius: 8
-                }]
-            };
-
-            var options = {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        suggestedMax: 500, // Supaya sumbu Y lebih proporsional
-                        ticks: {
-                            font: {
-                                size: 14
-                            }
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                animation: {
-                    duration: 1800,
-                    easing: 'easeInOutQuart'
-                }
-            };
-
-            new Chart(ctx, {
-                type: 'bar',
-                data: data,
-                options: options
-            });
-        });
-    </script>
-
-<footer>
-        <p>© 2025 Kalkulator Kalori | Semua Hak Dilindungi</p>
-    </footer>
+      hasil.style.display = 'block';
+      hasil.innerHTML = `
+        <h3>Hasil Perhitungan:</h3>
+        <p>Makanan: <strong>${nama}</strong></p>
+        <p>Jumlah Kalori: <strong>${jumlah} kkal</strong></p>
+        <p><em>${saran}</em></p>
+      `;
+    });
+  </script>
 
 </body>
 </html>
