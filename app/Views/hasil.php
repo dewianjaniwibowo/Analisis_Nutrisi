@@ -138,8 +138,8 @@
     <ul class="nav-links">
       <li><a href="#">Home</a></li>
       <li><a href="https://www.halodoc.com" target="_blank">Layanan</a></li>
-      <li><a href="#">Artikel</a></li>
-      <li><a href="#">Konsultasi</a></li>
+      <li><a href="<?= site_url('artikel') ?>">Artikel</a></li>
+      <li><a class="nav-link" href="<?= site_url('konsultasi') ?>">Konsultasi</a></li>
       <li><a href="#">Tentang Kami</a></li>
     </ul>
     <a href="#" class="login-btn">Login</a>
