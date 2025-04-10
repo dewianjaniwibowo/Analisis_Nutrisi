@@ -14,8 +14,7 @@
     }
 
     body {
-      background-color: #f6f7fb;
-      color: #333;
+      background: linear-gradient(135deg, #e0f7fa, #fce4ec);
     }
 
     /* 🔼 NAVBAR */
@@ -140,7 +139,8 @@
       <li><a href="https://www.halodoc.com" target="_blank">Layanan</a></li>
       <li><a href="<?= site_url('artikel') ?>">Artikel</a></li>
       <li><a class="nav-link" href="<?= site_url('konsultasi') ?>">Konsultasi</a></li>
-      <li><a href="#">Tentang Kami</a></li>
+      <li><a href="<?= base_url('tentang') ?>">Tentang Kami</a>
+      </li>
     </ul>
     <a href="#" class="login-btn">Login</a>
   </nav>

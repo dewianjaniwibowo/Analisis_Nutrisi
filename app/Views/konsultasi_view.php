@@ -57,7 +57,7 @@
             color: #555;
         }
 
-        .card button {
+        .card a button {
             background: #4CAF50;
             color: white;
             border: none;
@@ -67,7 +67,7 @@
             transition: background 0.3s ease;
         }
 
-        .card button:hover {
+        .card a button:hover {
             background: #45a049;
         }
 
@@ -84,16 +84,22 @@
 <h1>Silakan Pilih Dokter Gizi</h1>
 
 <div class="container">
+    <!-- Card Dokter 1 -->
     <div class="card">
         <img src="<?= base_url('images/doktergizi1.jpg') ?>" alt="dr. Gizi A">
-        <h3>dr. Gizi A</h3>
-        <button>Chat</button>
+        <h3>dr. Riko Saputra</h3>
+        <a href="<?= base_url('konsultasi/chat/1') ?>">
+            <button>Chat</button>
+        </a>
     </div>
 
+    <!-- Card Dokter 2 -->
     <div class="card">
         <img src="<?= base_url('images/doktergizi2.jpg') ?>" alt="dr. Gizi B">
-        <h3>dr. Gizi B</h3>
-        <button>Chat</button>
+        <h3>dr. Lalisa Mannoban</h3>
+        <a href="<?= base_url('konsultasi/chat/2') ?>">
+            <button>Chat</button>
+        </a>
     </div>
 </div>
 

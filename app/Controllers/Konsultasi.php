@@ -4,11 +4,13 @@ namespace App\Controllers;
 
 class Konsultasi extends BaseController
 {
-    public function index()
+    private $dokters;
+
+    public function __construct()
     {
-        // Simulasi data dokter (bisa ganti dengan DB nanti)
-        $data['dokters'] = [
-            [
+        // Simulasi data dokter (nanti bisa diganti ke DB)
+        $this->dokters = [
+            1 => [
                 'nama' => 'Dr. Febri Kurnia',
                 'spesialis' => 'Dokter Umum',
                 'pengalaman' => '18 tahun',
@@ -16,7 +18,7 @@ class Konsultasi extends BaseController
                 'harga' => 75000,
                 'foto' => 'febri.jpg',
             ],
-            [
+            2 => [
                 'nama' => 'Dr. Aliqa Citra Septiani',
                 'spesialis' => 'Dokter Umum',
                 'pengalaman' => '7 tahun',
@@ -25,7 +27,25 @@ class Konsultasi extends BaseController
                 'foto' => 'aliqa.jpg',
             ]
         ];
-        
+    }
+
+    public function index()
+    {
+        $data['dokters'] = $this->dokters;
         return view('konsultasi_view', $data);
+    }
+
+    public function chat($id_dokter)
+    {
+        if (!isset($this->dokters[$id_dokter])) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException("Dokter tidak ditemukan");
+        }
+
+        $dokter = $this->dokters[$id_dokter];
+
+        return view('chat_view', [
+            'nama_dokter' => $dokter['nama'],
+            'id_dokter' => $id_dokter
+        ]);
     }
 }
