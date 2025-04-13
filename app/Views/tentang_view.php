@@ -6,7 +6,7 @@
     <style>
         body {
         font-family: 'Segoe UI', sans-serif;
-        background-color: #fefefe; ← ini nih yang kita ganti
+        background: linear-gradient(to bottom, #e0f7ec, #ccf2e9); /* gradasi menggantikan background-color */
         color: #333;
         margin: 0;
         padding: 0;
@@ -14,7 +14,9 @@
         flex-direction: column;
         align-items: center;
         min-height: 100vh;
-    }
+    
+        }
+
 
 
         h1 {

@@ -21,5 +21,9 @@ $routes->get('konsultasi', 'Konsultasi::index');
 $routes->get('konsultasi/chat/(:num)', 'Konsultasi::chat/$1');
 $routes->get('tentang', 'Tentang::index');
 
+$routes->get('/register', 'Auth::register');
+$routes->post('/auth/save', 'Auth::save');
+
+
 
 
