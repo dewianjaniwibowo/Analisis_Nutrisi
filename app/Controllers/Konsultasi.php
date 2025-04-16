@@ -8,7 +8,7 @@ class Konsultasi extends BaseController
 
     public function __construct()
     {
-        // Simulasi data dokter (nanti bisa diganti ke DB)
+        // Simulasi data dokter
         $this->dokters = [
             1 => [
                 'nama' => 'Dr. Febri Kurnia',
@@ -16,36 +16,35 @@ class Konsultasi extends BaseController
                 'pengalaman' => '18 tahun',
                 'rating' => '98%',
                 'harga' => 75000,
-                'foto' => 'febri.jpg',
+                'foto' => 'doktergizi1.jpg',
             ],
             2 => [
-                'nama' => 'Dr. Aliqa Citra Septiani',
-                'spesialis' => 'Dokter Umum',
-                'pengalaman' => '7 tahun',
-                'rating' => '96%',
-                'harga' => 25000,
-                'foto' => 'aliqa.jpg',
+                'nama' => 'Dr. Aliqa Zahra',
+                'spesialis' => 'Dokter Gizi Klinik',
+                'pengalaman' => '10 tahun',
+                'rating' => '95%',
+                'harga' => 85000,
+                'foto' => 'doktergizi2.jpg',
             ]
         ];
     }
 
     public function index()
     {
-        $data['dokters'] = $this->dokters;
-        return view('konsultasi_view', $data);
+        return view('konsultasi_view', ['dokters' => $this->dokters]);
     }
 
-    public function chat($id_dokter)
-    {
-        if (!isset($this->dokters[$id_dokter])) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException("Dokter tidak ditemukan");
-        }
-
-        $dokter = $this->dokters[$id_dokter];
-
-        return view('chat_view', [
-            'nama_dokter' => $dokter['nama'],
-            'id_dokter' => $id_dokter
-        ]);
+    public function chat($id)
+{
+    // Cek apakah ID dokter valid
+    if (!isset($this->dokters[$id])) {
+        return redirect()->to('/konsultasi')->with('error', 'Dokter tidak ditemukan');
     }
+
+    $data = [
+        'dokter' => $this->dokters[$id]
+    ];
+
+    return view('chat_views', $data);
+}
 }

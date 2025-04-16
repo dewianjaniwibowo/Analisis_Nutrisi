@@ -1,115 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Chat dengan <?= esc($nama_dokter) ?></title>
+    <meta charset="UTF-8">
+    <title>Konsultasi dengan <?= $dokter['nama']; ?></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <?php $id = 'dokter1'; ?>
-    <h2>Chat dengan <?= esc($nama_dokter) ?></h2>
-    <p>Halo! Silakan mulai konsultasi Anda di sini.</p>
+    <div class="container mt-5">
+        <h3>Konsultasi dengan <?= $dokter['nama']; ?></h3>
+        <div class="card mb-4" style="max-width: 600px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="<?= base_url('images/' . $dokter['foto']); ?>" class="img-fluid rounded-start" alt="<?= $dokter['nama']; ?>">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $dokter['nama']; ?></h5>
+                        <p class="card-text">Spesialis: <?= $dokter['spesialis']; ?></p>
+                        <p class="card-text">Pengalaman: <?= $dokter['pengalaman']; ?></p>
+                        <p class="card-text">Rating: <?= $dokter['rating']; ?></p>
+                        <p class="card-text">Harga: Rp<?= number_format($dokter['harga']); ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Chat Box Langsung -->
-    <div class="chat-popup" id="chatBox<?= $id ?>">
-      <div class="chat-header">
-        Chat dengan <?= esc($nama_dokter) ?>
-        <span class="close-chat" onclick="closeChat('chatBox<?= $id ?>')">✖️</span>
-      </div>
-      <div class="chat-body" id="chatBody<?= $id ?>"></div>
-      <div class="chat-footer">
-        <input type="text" id="chatInput<?= $id ?>" placeholder="Tulis pertanyaan Anda...">
-        <button onclick="sendMessage('<?= $id ?>')">Kirim</button>
-      </div>
+        <form>
+            <div class="mb-3">
+                <label for="pesan" class="form-label">Tulis pertanyaan kamu:</label>
+                <textarea class="form-control" id="pesan" rows="4" placeholder="Halo dok, saya ingin bertanya tentang..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Kirim</button>
+        </form>
     </div>
-
-    <br>
-    <a href="<?= base_url('konsultasi') ?>">← Kembali ke daftar dokter</a>
-
-    <!-- CSS CHAT -->
-    <style>
-    .chat-popup {
-      position: relative;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      background-color: white;
-      width: 100%;
-      max-width: 500px;
-      margin: 20px 0;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      font-family: Arial, sans-serif;
-    }
-    .chat-header {
-      padding: 10px;
-      background: #4CAF50;
-      color: white;
-      font-weight: bold;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-    }
-    .chat-body {
-      max-height: 200px;
-      overflow-y: auto;
-      padding: 10px;
-    }
-    .chat-message {
-      margin: 5px 0;
-    }
-    .chat-message.user {
-      text-align: right;
-      color: #333;
-    }
-    .chat-message.bot {
-      text-align: left;
-      color: #4CAF50;
-    }
-    .chat-footer {
-      display: flex;
-      border-top: 1px solid #ccc;
-    }
-    .chat-footer input {
-      flex: 1;
-      padding: 10px;
-      border: none;
-      border-radius: 0 0 0 10px;
-      outline: none;
-    }
-    .chat-footer button {
-      background: #4CAF50;
-      border: none;
-      color: white;
-      padding: 10px;
-      border-radius: 0 0 10px 0;
-      cursor: pointer;
-    }
-    .close-chat {
-      float: right;
-      cursor: pointer;
-    }
-    </style>
-
-    <!-- JS CHAT -->
-    <script>
-    function closeChat(id) {
-      document.getElementById(id).style.display = "none";
-    }
-
-    function sendMessage(id) {
-      const input = document.getElementById(`chatInput${id}`);
-      const body = document.getElementById(`chatBody${id}`);
-      const msg = input.value.trim();
-      if (msg === '') return;
-
-      body.innerHTML += `<div class="chat-message user">${msg}</div>`;
-      input.value = '';
-      input.focus();
-      body.scrollTop = body.scrollHeight;
-
-      setTimeout(() => {
-        const reply = `Hai, ini ${id.includes('dr') ? '' : 'dr. '}<?= esc($nama_dokter) ?>. Pertanyaan Anda akan segera dibalas.`;
-        body.innerHTML += `<div class="chat-message bot">${reply}</div>`;
-        body.scrollTop = body.scrollHeight;
-      }, 800);
-    }
-    </script>
 </body>
-
 </html>

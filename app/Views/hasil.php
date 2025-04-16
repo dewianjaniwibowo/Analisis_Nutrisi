@@ -27,7 +27,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav me-3">
         <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="https://www.halodoc.com" target="_blank">Layanan</a></li>
+        <li class="nav-item"><a class="nav-link" href="#layanan">Layanan</a></li>
         <li class="nav-item"><a class="nav-link" href="<?= site_url('artikel') ?>">Artikel</a></li>
         <li class="nav-item"><a class="nav-link" href="<?= site_url('konsultasi') ?>">Konsultasi</a></li>
         <li class="nav-item"><a class="nav-link" href="<?= base_url('tentang') ?>">Tentang Kami</a></li>
@@ -56,6 +56,55 @@
     </form>
 
     <div class="result alert alert-info mt-4 d-none" id="hasil"></div>
+
+    <!-- 🔹 Layanan Konsultasi Gizi -->
+<div id="layanan" class="container my-5">
+  <div class="card shadow-sm">
+    <div class="card-body p-4">
+      <h2 class="text-center mb-4">Konsultasi Gizi Online</h2>
+      <p class="text-center text-muted">
+        Isi formulir berikut. Pertanyaanmu akan dijawab dalam waktu <strong>1x24 jam</strong>.
+      </p>
+
+      <form>
+        <div class="mb-3">
+          <label for="nama" class="form-label">Nama Lengkap</label>
+          <input type="text" class="form-control" id="nama" required placeholder="Contoh: Rina Andriani">
+        </div>
+
+        <div class="mb-3">
+          <label for="umur" class="form-label">Umur</label>
+          <input type="number" class="form-control" id="umur" required placeholder="Contoh: 25">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Jenis Kelamin</label><br>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" id="laki" value="Laki-laki">
+            <label class="form-check-label" for="laki">Laki-laki</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" id="perempuan" value="Perempuan">
+            <label class="form-check-label" for="perempuan">Perempuan</label>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="keluhan" class="form-label">Keluhan / Pertanyaan</label>
+          <textarea class="form-control" id="keluhan" rows="4" placeholder="Tulis pertanyaanmu di sini..." required></textarea>
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-success">Kirim Konsultasi</button>
+        </div>
+      </form>
+
+      <div class="alert alert-info mt-4 text-center">
+        💬 Jawaban akan dikirim dalam waktu <strong>1x24 jam</strong>. Terima kasih telah berkonsultasi!
+      </div>
+    </div>
+  </div>
+</div>
 
     <div class="tips alert alert-warning mt-4">
       🌱 <strong>Tips Sehat:</strong><br/>
