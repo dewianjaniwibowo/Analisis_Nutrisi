@@ -3,58 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Tentang Kami</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         body {
-        font-family: 'Segoe UI', sans-serif;
-        background: linear-gradient(to bottom, #e0f7ec, #ccf2e9); /* gradasi menggantikan background-color */
-        color: #333;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 100vh;
-    
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom, #e0f7ec, #ccf2e9);
+            color: #333;
         }
 
-
-
-        h1 {
-            margin-top: 40px;
-            color: #2c3e50;
-            font-size: 2.5rem;
-        }
-
-        .container {
-            max-width: 800px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .container img {
+        .about-image {
             max-width: 350px;
-            margin: 20px auto;
             border-radius: 12px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
-        .container img:hover {
+        .about-image:hover {
             transform: scale(1.03);
-        }
-
-        .section-title {
-            color: #27ae60;
-            font-weight: bold;
-            font-size: 1.3rem;
-            margin-top: 30px;
-            margin-bottom: 10px;
-        }
-
-        .description p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin: 15px 0;
         }
 
         .highlight {
@@ -70,13 +37,27 @@
         .emoji {
             font-size: 1.3rem;
         }
+
+        .section-title {
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .description p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
     </style>
 </head>
 <body>
-    <h1>Tentang Kami <span class="emoji">👨‍🍳🥦</span></h1>
 
-    <div class="container">
-        <img src="<?= base_url('images/tentangkami.gif') ?>" alt="Tentang Kami">
+    <div class="container py-5 text-center">
+        <h1 class="mb-4">Tentang Kami <span class="emoji">👨‍🍳🥦</span></h1>
+
+        <img src="<?= base_url('images/tentangkami.gif') ?>" alt="Tentang Kami" class="about-image img-fluid mb-4">
 
         <div class="description">
             <div class="section-title">🌟 Siapa Kami?</div>
@@ -102,5 +83,8 @@
             </p>
         </div>
     </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

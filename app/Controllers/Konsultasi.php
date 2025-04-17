@@ -25,6 +25,14 @@ class Konsultasi extends BaseController
                 'rating' => '95%',
                 'harga' => 85000,
                 'foto' => 'doktergizi2.jpg',
+            ],
+            3 => [
+                'nama' => 'Dr. Nabila Hana',
+                'spesialis' => 'Dokter Anak',
+                'pengalaman' => '12 tahun',
+                'rating' => '96%',
+                'harga' => 90000,
+                'foto' => 'dokter3.jpg', 
             ]
         ];
     }
